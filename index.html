@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Gabriela & Arash | Nuestra Boda / Our Wedding</title>
+    <!-- Tailwind CSS desde CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Montserrat', sans-serif; }
+        h1, h2, h3, .serif-text { font-family: 'Playfair Display', serif; }
+        .hidden-lang { display: none !important; }
+    </style>
+</head>
+<body class="bg-[#faf8f5] text-stone-800 antialiased">
+
+    <!-- 1. PANTALLA INTRODUCTORIA Y SELECCIÓN DE IDIOMA -->
+    <div id="introScreen" class="fixed inset-0 z-50 flex flex-col justify-center items-center bg-[#fdfbf7] p-6 text-center transition-all duration-700 overflow-y-auto">
+        
+        <!-- Nombres de los Novios Arriba (Novia primero) -->
+        <div class="mb-4">
+            <h2 class="serif-text text-3xl md:text-4xl font-light text-stone-900 tracking-wide">
+                Arash <span class="text-[#8c7355]">&</span> Gabriela
+            </h2>
+        </div>
+
+        <!-- Imagen de Portada -->
+        <div class="max-w-md w-full mb-4 rounded-2xl overflow-hidden shadow-md border border-amber-100/60 bg-white">
+            <img src="imagen.png"Gabriela & Arash - Invitación de Boda" class="w-full h-auto object-cover block">
+        </div>
+
+        <!-- Textos Bilingües de Bienvenida -->
+        <p class="serif-text italic text-stone-600 mb-1">
+            Con ilusión, celebramos el inicio de nuestra vida juntos<br>
+            <span class="text-sm text-stone-500">With excitement, we celebrate the beginning of our life together.</span>
+        </p>
+        <p class="text-xs uppercase tracking-widest text-stone-400 mb-6 mt-2">
+            Selecciona idioma / Select language
+        </p>
+
+        <!-- Botones de Selección de Idioma -->
+        <div class="flex flex-col sm:flex-row gap-3 w-full max-w-xs">
+            <button onclick="selectLanguage('es')" class="w-full bg-[#8c7355] hover:bg-[#735e45] text-white py-3.5 px-6 rounded-full font-medium tracking-wide transition shadow-md">
+                Español ES
+            </button>
+            <button onclick="selectLanguage('en')" class="w-full bg-stone-100 hover:bg-stone-200 text-stone-800 py-3.5 px-6 rounded-full font-medium tracking-wide transition border border-stone-200">
+                English EN
+            </button>
+        </div>
+    </div>
+
+    <!-- 2. CONTENIDO PRINCIPAL DE LA INVITACIÓN -->
+    <div id="invitationContent" class="hidden-lang min-h-screen">
+
+        <!-- BOTÓN FLOTANTE PARA CAMBIAR IDIOMA -->
+        <button onclick="showLanguageSelector()" class="fixed top-4 right-4 z-40 bg-white/90 backdrop-blur-md border border-stone-200 text-stone-700 px-3.5 py-1.5 rounded-full text-xs font-semibold shadow-md hover:bg-white transition">
+            🌐 <span lang-es>Idioma</span><span lang-en class="hidden-lang">Language</span>
+        </button>
+
+        <!-- HEADER / PORTADA PRINCIPAL -->
+        <header class="min-h-screen flex flex-col justify-center items-center text-center p-6 bg-gradient-to-b from-[#f7f3ed] to-[#faf8f5]">
+            <div class="max-w-xs mb-4">
+                <span class="serif-text text-4xl text-[#8c7355] tracking-widest">G & A</span>
+            </div>
+            <p class="uppercase tracking-widest text-xs text-[#8c7355] mb-3">
+                <span lang-es>Nos Casamos</span>
+                <span lang-en class="hidden-lang">We Are Getting Married</span>
+            </p>
+            <h1 class="text-4xl md:text-6xl font-light text-stone-900 mb-4">Gabriela <span class="text-[#8c7355]">&</span> Arash</h1>
+            <p class="serif-text italic text-lg text-stone-600 mb-6 max-w-md">
+                <span lang-es>"Con ilusión, celebramos el inicio de nuestra vida juntos."</span>
+                <span lang-en class="hidden-lang">"With joy, we celebrate the beginning of our life together."</span>
+            </p>
+
+            <!-- PADRES DE LOS NOVIOS -->
+            <div class="text-xs text-stone-500 space-y-2 mb-8 max-w-md">
+                <div>
+                    <p class="font-semibold text-stone-700"><span lang-es>Padres de la Novia</span><span lang-en class="hidden-lang">Bride's Parents</span>:</p>
+                    <p>Abigail Salas de Gutierrez & Jaime Gutierrez Pomier</p>
+                </div>
+                <div>
+                    <p class="font-semibold text-stone-700"><span lang-es>Padres del Novio</span><span lang-en class="hidden-lang">Groom's Parents</span>:</p>
+                    <p>Mehri Fadavi & Mustafa Taheri-Araghi</p>
+                </div>
+            </div>
+
+            <div class="border-y border-amber-200/80 py-3 px-8">
+                <p class="text-xs md:text-sm font-semibold tracking-widest text-stone-700">
+                    <span lang-es>SÁBADO, 06 DE FEBRERO DE 2027 • BOGOTÁ</span>
+                    <span lang-en class="hidden-lang">SATURDAY, FEBRUARY 06, 2027 • BOGOTA</span>
+                </p>
+            </div>
+        </header>
+
+        <!-- CUENTA REGRESIVA -->
+        <section class="py-12 bg-white text-center border-y border-stone-100 shadow-sm">
+            <h2 class="text-xs uppercase tracking-widest text-stone-500 mb-6">
+                <span lang-es>Faltan tan solo:</span>
+                <span lang-en class="hidden-lang">Counting down:</span>
+            </h2>
+            <div id="countdown" class="flex justify-center gap-3 md:gap-6 text-center">
+                <div class="bg-[#fcfaf7] p-3 md:p-4 rounded-xl w-16 md:w-20 border border-stone-100">
+                    <span id="days" class="block text-2xl md:text-3xl font-bold text-[#8c7355]">00</span>
+                    <span class="text-[10px] md:text-xs text-stone-500 uppercase"><span lang-es>Días</span><span lang-en class="hidden-lang">Days</span></span>
+                </div>
+                <div class="bg-[#fcfaf7] p-3 md:p-4 rounded-xl w-16 md:w-20 border border-stone-100">
+                    <span id="hours" class="block text-2xl md:text-3xl font-bold text-[#8c7355]">00</span>
+                    <span class="text-[10px] md:text-xs text-stone-500 uppercase"><span lang-es>Horas</span><span lang-en class="hidden-lang">Hours</span></span>
+                </div>
+                <div class="bg-[#fcfaf7] p-3 md:p-4 rounded-xl w-16 md:w-20 border border-stone-100">
+                    <span id="minutes" class="block text-2xl md:text-3xl font-bold text-[#8c7355]">00</span>
+                    <span class="text-[10px] md:text-xs text-stone-500 uppercase"><span lang-es>Min</span><span lang-en class="hidden-lang">Min</span></span>
+                </div>
+                <div class="bg-[#fcfaf7] p-3 md:p-4 rounded-xl w-16 md:w-20 border border-stone-100">
+                    <span id="seconds" class="block text-2xl md:text-3xl font-bold text-[#8c7355]">00</span>
+                    <span class="text-[10px] md:text-xs text-stone-500 uppercase"><span lang-es>Seg</span><span lang-en class="hidden-lang">Sec</span></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- UBICACIÓN E ITINERARIO CON MAPA EMBEBIDO -->
+        <section class="py-16 px-6 max-w-2xl mx-auto text-center">
+            <h2 class="serif-text text-3xl mb-12 text-stone-800">
+                <span lang-es>Ubicación e Itinerario</span>
+                <span lang-en class="hidden-lang">Location & Schedule</span>
+            </h2>
+            
+            <div class="space-y-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-stone-200/60">
+                    <div class="text-[#8c7355] text-3xl mb-2">🥂</div>
+                    <h3 class="serif-text text-xl font-semibold mb-1">
+                        <span lang-es>Recepción, Cena y Celebración</span>
+                        <span lang-en class="hidden-lang">Reception, Dinner & Celebration</span>
+                    </h3>
+                    <p class="text-sm font-medium text-stone-700 mb-1">Hotel El Dorado Bogotá</p>
+                    <p class="text-xs text-stone-500 mb-2">Calle 95 # 13-66 - Bogotá, Colombia</p>
+                    <p class="text-xs font-semibold text-[#8c7355] mb-6">17:00 HRS</p>
+
+                    <!-- Mapa Interactivo -->
+                    <div class="w-full h-64 rounded-xl overflow-hidden shadow-inner border border-stone-200 mb-6">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d497.06420026827146!2d-74.0487624710417!3d4.680418311692145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9a93ee563d27%3A0x757b0f7ef3e96bb0!2sHotel%20El%20Dorado%20Bogota!5e0!3m2!1ses-419!2sbo!4v1793830176313!5m2!1ses-419!2sbo" class="w-full h-full border-0" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    </div>
+
+                    <a href="https://maps.app.goo.gl/9yG6mU8R8J8Qe3aE9" target="_blank" class="inline-block bg-stone-900 text-white text-xs uppercase tracking-widest px-6 py-3 rounded-full hover:bg-[#8c7355] transition">
+                        <span lang-es>Abrir en Google Maps</span>
+                        <span lang-en class="hidden-lang">Open in Google Maps</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CÓDIGO DE VESTIMENTA (CON TU IMAGEN DE VESTIMENTA.PNG) -->
+        <section class="py-16 bg-[#f7f3ed] text-center px-6 border-y border-amber-100">
+            <div class="max-w-md mx-auto">
+                <p class="text-sm uppercase tracking-widest text-[#8c7355] mb-6 font-medium">
+                    <span lang-es>Formal</span>
+                    <span lang-en class="hidden-lang">Formal Attire</span>
+                </p>
+
+                <!-- Imagen vestimenta.png -->
+                <div class="w-full max-w-xs mx-auto mb-6 rounded-2xl overflow-hidden shadow-sm">
+                    <img src="vestimenta.png" alt="Código de Vestimenta" class="w-full h-auto block">
+                </div>
+
+                <p class="text-xs md:text-sm text-stone-600 leading-relaxed max-w-md mx-auto">
+                    <span lang-es>Agradecemos a nuestras invitadas reservar el color blanco para la novia.</span>
+                    <span lang-en class="hidden-lang">We kindly ask female guests to reserve the color white for the bride.</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- CONFIRMACIÓN (SOLO WHATSAPP) -->
+        <section class="py-16 bg-stone-900 text-white text-center px-6">
+            <h2 class="serif-text text-3xl mb-4">
+                <span lang-es>Confirmación de Asistencia</span>
+                <span lang-en class="hidden-lang">RSVP</span>
+            </h2>
+            <p class="text-xs text-stone-300 max-w-md mx-auto mb-8 leading-relaxed">
+                <span lang-es>Por favor confirma tu presencia para esperarte con todo listo.</span>
+                <span lang-en class="hidden-lang">Please confirm your attendance so we can prepare for you.</span>
+            </p>
+            
+            <div class="flex justify-center max-w-md mx-auto">
+                <!-- Enlace único a WhatsApp Directo -->
+                <a id="whatsappBtn" href="#" target="_blank" class="bg-emerald-700 hover:bg-emerald-600 text-white text-xs uppercase tracking-widest px-8 py-4 rounded-full font-semibold transition shadow-lg">
+                    <span lang-es>Confirmar por WhatsApp</span>
+                    <span lang-en class="hidden-lang">Confirm via WhatsApp</span>
+                </a>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        function selectLanguage(lang) {
+            document.getElementById('introScreen').classList.add('hidden-lang');
+            document.getElementById('invitationContent').classList.remove('hidden-lang');
+
+            const esElements = document.querySelectorAll('[lang-es]');
+            const enElements = document.querySelectorAll('[lang-en]');
+            const waBtn = document.getElementById('whatsappBtn');
+            const phoneNumber = "59173712468"; // Aquí va tu número
+
+            if (lang === 'en') {
+                esElements.forEach(el => el.classList.add('hidden-lang'));
+                enElements.forEach(el => el.classList.remove('hidden-lang'));
+                waBtn.href = `https://wa.me/${phoneNumber}?text=Hello!%20I%20am%20confirming%20my%20attendance%20to%20Gabriela%20and%20Arash's%20wedding.`;
+            } else {
+                enElements.forEach(el => el.classList.add('hidden-lang'));
+                esElements.forEach(el => el.classList.remove('hidden-lang'));
+                waBtn.href = `https://wa.me/${phoneNumber}?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Gabriela%20y%20Arash.`;
+            }
+        }
+
+        function showLanguageSelector() {
+            document.getElementById('introScreen').classList.remove('hidden-lang');
+            document.getElementById('invitationContent').classList.add('hidden-lang');
+        }
+
+        // Cuenta regresiva ajustada al 06 de febrero de 2027
+        const weddingDate = new Date("February 6, 2027 17:00:00").getTime();
+        
+        const timer = setInterval(() => {
+            const now = new Date().getTime();
+            const difference = weddingDate - now;
+
+            if (difference < 0) {
+                clearInterval(timer);
+                document.getElementById("countdown").innerHTML = "<p class='text-amber-800 font-semibold'>¡Llegó el gran día!</p>";
+                return;
+            }
+
+            document.getElementById("days").innerText = Math.floor(difference / (1000 * 60 * 60 * 24));
+            document.getElementById("hours").innerText = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById("minutes").innerText = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById("seconds").innerText = Math.floor((difference % (1000 * 60)) / 1000);
+        }, 1000);
+    </script>
+</body>
+</html>
